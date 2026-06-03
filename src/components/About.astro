@@ -1,0 +1,48 @@
+---
+---
+
+<section id="about" class="py-24 px-6 max-w-5xl mx-auto">
+  <div class="reveal">
+    <p class="section-label">01 / Über mich</p>
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">
+      Wer steckt dahinter?
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-12 items-start">
+    <div class="reveal reveal-delay-1 space-y-5 text-text/70 leading-relaxed">
+      <p>
+        Ich bin dualer Student der Informatik im 4. Semester und arbeite parallel an echten Projekten.
+        Aktuell liegt mein Fokus auf Internet- und Webtechnologien — von den Grundlagen der
+        Bitübertragung bis zu modernen Frameworks wie React.
+      </p>
+      <p>
+        Langfristig will ich in Richtung Cybersecurity, konkret Pentesting und AI Security.
+        Die Schnittstelle zwischen Anwendungsentwicklung und Sicherheit finde ich am spannendsten.
+      </p>
+      <p>
+        Neben dem Studium beschäftige ich mich mit KI-gestützter Workflow-Automatisierung über n8n
+        und Self-Hosting auf meinem Home-Server: Pi-hole für DNS-Adblocking, NAS für lokale
+        Datenhaltung, alles containerisiert mit Docker.
+      </p>
+    </div>
+
+    <div class="reveal reveal-delay-2 space-y-3">
+      {[
+        { icon: '⬡', label: 'Duales Studium Informatik', sub: 'Schwerpunkt: Internet- & Webtechnologien' },
+        { icon: '⬡', label: 'Fullstack-Entwicklung', sub: 'React · TypeScript · Flask · MongoDB' },
+        { icon: '⬡', label: 'Self-Hosting & DevOps', sub: 'Home-Server · Docker · Pi-hole · NAS' },
+        { icon: '⬡', label: 'Ziel: Cybersecurity', sub: 'Pentesting · AI Security · langfristiger Fokus' },
+        { icon: '⬡', label: 'KI-Workflow-Automatisierung', sub: 'n8n · AI-gestützte Prozesse' },
+      ].map((item) => (
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent/30 transition-colors duration-200 group">
+          <span class="text-accent mt-0.5 text-lg leading-none">›</span>
+          <div>
+            <p class="text-sm font-medium text-text group-hover:text-accent transition-colors duration-200">{item.label}</p>
+            <p class="text-xs text-muted mt-0.5 font-mono">{item.sub}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

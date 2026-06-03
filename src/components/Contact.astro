@@ -1,0 +1,113 @@
+---
+---
+
+<section id="contact" class="py-24 px-6 max-w-5xl mx-auto">
+  <div class="reveal">
+    <p class="section-label">05 / Kontakt</p>
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+      Lass uns reden
+    </h2>
+    <p class="text-text/50 text-sm max-w-md mb-12 leading-relaxed">
+      Offen für Gespräche über Projekte, Kooperationen oder interessante Möglichkeiten.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <div class="reveal reveal-delay-1 space-y-4">
+      {[
+        {
+          label: 'E-Mail',
+          value: 'mkilian338@gmail.com',
+          href: 'mailto:mkilian338@gmail.com',
+          mono: true,
+        },
+        {
+          label: 'GitHub',
+          value: 'github.com/sonas05',
+          href: 'https://github.com/sonas05',
+          mono: true,
+        },
+        {
+          label: 'LinkedIn',
+          value: 'Profil hinzufügen',
+          href: '#',
+          mono: false,
+          muted: true,
+        },
+      ].map((item) => (
+        <a
+          href={item.href}
+          target={item.href.startsWith('http') ? '_blank' : undefined}
+          rel="noopener"
+          class="flex items-center justify-between p-5 border border-border hover:border-accent/40 hover:bg-surface/50 transition-all duration-200 group"
+        >
+          <div>
+            <p class="text-xs text-muted font-mono uppercase tracking-widest mb-1">{item.label}</p>
+            <p class={`text-sm ${item.mono ? 'font-mono' : ''} ${item.muted ? 'text-muted/50' : 'text-text/80'} group-hover:text-accent transition-colors duration-200`}>
+              {item.value}
+            </p>
+          </div>
+          <svg class="text-muted group-hover:text-accent transition-colors duration-200" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      ))}
+    </div>
+
+    <div class="reveal reveal-delay-2 p-6 border border-border bg-surface/20">
+      <p class="text-xs font-mono text-muted uppercase tracking-widest mb-5">Schnellnachricht</p>
+      <form
+        id="contact-form"
+        class="space-y-4"
+        onsubmit="handleSubmit(event)"
+      >
+        <div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+            class="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-muted/40 focus:outline-none focus:border-accent/50 transition-colors duration-200 font-mono"
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="E-Mail"
+            required
+            class="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-muted/40 focus:outline-none focus:border-accent/50 transition-colors duration-200 font-mono"
+          />
+        </div>
+        <div>
+          <textarea
+            name="message"
+            placeholder="Nachricht..."
+            rows="4"
+            required
+            class="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-muted/40 focus:outline-none focus:border-accent/50 transition-colors duration-200 font-mono resize-none"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-accent text-bg text-sm font-semibold py-3 hover:bg-accent-dim transition-colors duration-200 tracking-wide"
+        >
+          Senden →
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  function handleSubmit(e: Event) {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+    const name = data.get('name');
+    const email = data.get('email');
+    const message = data.get('message');
+    window.location.href = `mailto:mkilian338@gmail.com?subject=Portfolio Kontakt von ${name}&body=${encodeURIComponent(`Von: ${name}\nE-Mail: ${email}\n\n${message}`)}`;
+  }
+  (window as any).handleSubmit = handleSubmit;
+</script>

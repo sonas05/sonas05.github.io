@@ -1,0 +1,88 @@
+---
+const categories = [
+  {
+    title: 'Sprachen',
+    items: [
+      { name: 'C++', icon: 'devicon-cplusplus-plain', level: 'Fortgeschritten' },
+      { name: 'TypeScript', icon: 'devicon-typescript-plain', level: 'Sicher' },
+      { name: 'Python', icon: 'devicon-python-plain', level: 'Sicher' },
+      { name: 'JavaScript', icon: 'devicon-javascript-plain', level: 'Sicher' },
+      { name: 'HTML/CSS', icon: 'devicon-html5-plain', level: 'Sicher' },
+    ],
+  },
+  {
+    title: 'Frontend',
+    items: [
+      { name: 'React 18', icon: 'devicon-react-original', level: 'Sicher' },
+      { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain', level: 'Sicher' },
+      { name: 'Vite', icon: 'devicon-vitejs-plain', level: 'Sicher' },
+    ],
+  },
+  {
+    title: 'Backend & DB',
+    items: [
+      { name: 'Flask', icon: 'devicon-flask-original', level: 'Sicher' },
+      { name: 'MongoDB', icon: 'devicon-mongodb-plain', level: 'Sicher' },
+      { name: 'REST APIs', icon: 'devicon-fastapi-plain', level: 'Sicher' },
+    ],
+  },
+  {
+    title: 'DevOps & Tools',
+    items: [
+      { name: 'Docker', icon: 'devicon-docker-plain', level: 'Sicher' },
+      { name: 'Linux', icon: 'devicon-linux-plain', level: 'Sicher' },
+      { name: 'Git', icon: 'devicon-git-plain', level: 'Sicher' },
+      { name: 'Fish Shell', icon: 'devicon-bash-plain', level: 'Grundlagen' },
+      { name: 'n8n', icon: 'devicon-nodejs-plain', level: 'Grundlagen' },
+    ],
+  },
+];
+---
+
+<section id="skills" class="py-24 px-6 max-w-5xl mx-auto">
+  <div class="reveal">
+    <p class="section-label">02 / Skills</p>
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+      Tech Stack
+    </h2>
+    <p class="text-text/50 text-sm font-mono mb-12">Nur Technologien, die ich wirklich im Einsatz hatte.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    {categories.map((cat, i) => (
+      <div class={`reveal reveal-delay-${(i % 4) + 1}`}>
+        <h3 class="text-xs font-mono tracking-widest text-muted uppercase mb-4 pb-3 border-b border-border">
+          {cat.title}
+        </h3>
+        <div class="space-y-2">
+          {cat.items.map((item) => (
+            <div class="flex items-center gap-3 p-3 hover:bg-surface transition-colors duration-200 group rounded">
+              <i class={`${item.icon} text-2xl text-muted group-hover:text-accent transition-colors duration-200`}></i>
+              <div class="flex-1 min-w-0">
+                <span class="text-sm text-text/80 group-hover:text-text transition-colors duration-200">{item.name}</span>
+              </div>
+              <span class={`text-xs font-mono px-2 py-0.5 rounded border ${
+                item.level === 'Fortgeschritten'
+                  ? 'border-accent/40 text-accent'
+                  : item.level === 'Sicher'
+                  ? 'border-border text-muted'
+                  : 'border-border/50 text-muted/50'
+              }`}>
+                {item.level}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="reveal mt-10 p-5 border border-border/50 bg-surface">
+    <p class="text-xs font-mono text-muted uppercase tracking-widest mb-3">Im Aufbau</p>
+    <div class="flex flex-wrap gap-2">
+      {['Pentesting', 'AI Security', 'TryHackMe', 'HackTheBox', 'Wireshark', 'nmap', 'Burp Suite'].map(t => (
+        <span class="tag opacity-60">{t}</span>
+      ))}
+    </div>
+  </div>
+</section>

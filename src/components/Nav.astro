@@ -1,0 +1,44 @@
+---
+const links = [
+  { href: '#projects', label: 'Projekte' },
+  { href: '#about', label: 'Über mich' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Kontakt' },
+];
+---
+
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="font-mono text-sm text-accent tracking-widest hover:opacity-80 transition-opacity">
+      KM
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm text-muted hover:text-text transition-colors duration-200 tracking-wide"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+    <a
+      href="/cv.pdf"
+      download
+      class="text-xs font-mono border border-accent text-accent px-4 py-1.5 hover:bg-accent hover:text-bg transition-all duration-200 tracking-widest"
+    >
+      CV
+    </a>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav?.classList.add('bg-bg/90', 'backdrop-blur-md', 'border-b', 'border-border');
+    } else {
+      nav?.classList.remove('bg-bg/90', 'backdrop-blur-md', 'border-b', 'border-border');
+    }
+  });
+</script>
