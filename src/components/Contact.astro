@@ -17,8 +17,8 @@
       {[
         {
           label: 'E-Mail',
-          value: 'mkilian338@gmail.com',
-          href: 'mailto:mkilian338@gmail.com',
+          value: 'kilian_mueller@tutamail.com',
+          href: 'mailto:kilian_mueller@tutamail.com',
           mono: true,
         },
         {
@@ -29,8 +29,8 @@
         },
         {
           label: 'LinkedIn',
-          value: 'Profil hinzufügen',
-          href: '#',
+          value: 'Kilian Mueller',
+          href: 'https://www.linkedin.com/in/kilian-m%C3%BCller-b9a5b9358/',
           mono: false,
           muted: true,
         },
@@ -107,7 +107,7 @@
     const name = data.get('name');
     const email = data.get('email');
     const message = data.get('message');
-    window.location.href = `mailto:mkilian338@gmail.com?subject=Portfolio Kontakt von ${name}&body=${encodeURIComponent(`Von: ${name}\nE-Mail: ${email}\n\n${message}`)}`;
+    window.location.href = `mailto:kilian_mueller@tutamail.com?subject=Portfolio Kontakt von ${name}&body=${encodeURIComponent(`Von: ${name}\nE-Mail: ${email}\n\n${message}`)}`;
   }
   (window as any).handleSubmit = handleSubmit;
 </script>
