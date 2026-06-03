@@ -7,8 +7,8 @@ const projects = [
     description:
       'Webanwendung zur Erfassung und Auswertung von Trainingseinheiten. Vollständiger Entwicklungszyklus von der Konzeption bis zum Deployment — typsichere Komponenten, REST-API und NoSQL-Datenhaltung.',
     stack: ['REACT 18', 'TYPESCRIPT', 'TAILWIND', 'FLASK', 'MONGODB'],
-    github: '#',
     wip: true,
+    screenshot: '/fitnesstracker.png',
   },
   {
     number: '02',
@@ -17,7 +17,6 @@ const projects = [
     description:
       'Mitarbeiterzeiterfassung ohne Framework-Overhead. Bewusste Entscheidung gegen React: reines Tailwind CSS für eine schlanke, wartbare UI — zeigt dass Toolwahl Kontext braucht.',
     stack: ['TAILWIND', 'JAVASCRIPT', 'FLASK', 'MONGODB'],
-    github: '#',
     wip: true,
   },
   {
@@ -27,8 +26,8 @@ const projects = [
     description:
       'Self-Hosted Infrastructure auf Ubuntu 24.04: Pi-hole für DNS-Adblocking, NAS für lokale Datenhaltung, alles containerisiert mit Docker. Eigeninitiative außerhalb der Uni.',
     stack: ['DOCKER', 'LINUX', 'PI-HOLE', 'UBUNTU'],
-    github: '#',
     wip: false,
+    screenshot: '/pihole.png',
   },
 ];
 ---
@@ -97,13 +96,23 @@ const projects = [
             </div>
           </div>
 
-          <!-- Right: screenshot placeholder -->
+          <!-- Right: screenshot -->
           <div class="hidden md:flex items-center justify-center">
-            <div class="border-2 border-cream/15 w-full aspect-video flex items-center justify-center group-hover:border-cream/30 transition-colors duration-300">
-              <span class="font-mono text-xs text-cream/15 uppercase tracking-widest">
-                SCREENSHOT // COMING SOON
-              </span>
-            </div>
+            {p.screenshot ? (
+              <div class="border-2 border-cream/15 w-full aspect-video overflow-hidden group-hover:border-cream/30 transition-colors duration-300">
+                <img
+                  src={p.screenshot}
+                  alt={`${p.title} Screenshot`}
+                  class="w-full h-full object-cover object-top opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
+            ) : (
+              <div class="border-2 border-cream/15 w-full aspect-video flex items-center justify-center group-hover:border-cream/30 transition-colors duration-300">
+                <span class="font-mono text-xs text-cream/15 uppercase tracking-widest">
+                  SCREENSHOT // COMING SOON
+                </span>
+              </div>
+            )}
           </div>
 
         </article>
