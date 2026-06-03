@@ -1,48 +1,47 @@
 ---
 ---
 
-<section id="about" class="py-24 px-6 max-w-5xl mx-auto">
-  <div class="reveal">
-    <p class="section-label">01 / Über mich</p>
-    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">
-      Wer steckt dahinter?
-    </h2>
-  </div>
+<section id="about" class="dots-light">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
 
-  <div class="grid md:grid-cols-2 gap-12 items-start">
-    <div class="reveal reveal-delay-1 space-y-5 text-text/70 leading-relaxed">
-      <p>
-        Ich bin dualer Student der Informatik im 4. Semester und arbeite parallel an echten Projekten.
-        Aktuell liegt mein Fokus auf Internet- und Webtechnologien — von den Grundlagen der
-        Bitübertragung bis zu modernen Frameworks wie React.
-      </p>
-      <p>
-        Langfristig will ich in Richtung Cybersecurity, konkret Pentesting und AI Security.
-        Die Schnittstelle zwischen Anwendungsentwicklung und Sicherheit finde ich am spannendsten.
-      </p>
-      <p>
-        Neben dem Studium beschäftige ich mich mit KI-gestützter Workflow-Automatisierung über n8n
-        und Self-Hosting auf meinem Home-Server: Pi-hole für DNS-Adblocking, NAS für lokale
-        Datenhaltung, alles containerisiert mit Docker.
-      </p>
+    <div class="reveal mb-16 border-b-2 border-dark/10 pb-6">
+      <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-3">WHO_AM_I //</p>
+      <h2 class="display-italic text-dark" style="font-size: clamp(2.5rem, 7vw, 5.5rem);">
+        ÜBER<br />MICH.
+      </h2>
     </div>
 
-    <div class="reveal reveal-delay-2 space-y-3">
-      {[
-        { icon: '⬡', label: 'Duales Studium Informatik', sub: 'Schwerpunkt: Internet- & Webtechnologien' },
-        { icon: '⬡', label: 'Fullstack-Entwicklung', sub: 'React · TypeScript · Flask · MongoDB' },
-        { icon: '⬡', label: 'Self-Hosting & DevOps', sub: 'Home-Server · Docker · Pi-hole · NAS' },
-        { icon: '⬡', label: 'Ziel: Cybersecurity', sub: 'Pentesting · AI Security · langfristiger Fokus' },
-        { icon: '⬡', label: 'KI-Workflow-Automatisierung', sub: 'n8n · AI-gestützte Prozesse' },
-      ].map((item) => (
-        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent/30 transition-colors duration-200 group">
-          <span class="text-accent mt-0.5 text-lg leading-none">›</span>
-          <div>
-            <p class="text-sm font-medium text-text group-hover:text-accent transition-colors duration-200">{item.label}</p>
-            <p class="text-xs text-muted mt-0.5 font-mono">{item.sub}</p>
+    <div class="grid md:grid-cols-2 gap-16">
+
+      <!-- Text -->
+      <div class="reveal reveal-delay-1 space-y-6">
+        {[
+          'Ich bin dualer Student der Informatik im 4. Semester und arbeite parallel an echten Projekten. Aktuell liegt mein Fokus auf Internet- und Webtechnologien — von den Grundlagen der Bitübertragung bis zu modernen Frameworks wie React.',
+          'Langfristig will ich in Richtung Cybersecurity, konkret Pentesting und AI Security. Die Schnittstelle zwischen Anwendungsentwicklung und Sicherheit finde ich am spannendsten.',
+          'Neben dem Studium betreibe ich einen Home-Server mit Pi-hole, NAS und Docker-Stack, und beschäftige mich mit KI-gestützter Workflow-Automatisierung über n8n.',
+        ].map((text) => (
+          <p class="font-mono text-xs text-dark/60 leading-relaxed">{text}</p>
+        ))}
+      </div>
+
+      <!-- Fact list -->
+      <div class="reveal reveal-delay-2 space-y-0">
+        {[
+          { key: 'STATUS', val: 'Duales Studium · 4. Semester' },
+          { key: 'FOKUS', val: 'Internet- & Webtechnologien' },
+          { key: 'ZIEL', val: 'Cybersecurity · AI Security' },
+          { key: 'STACK', val: 'React · TypeScript · Flask · MongoDB' },
+          { key: 'INFRA', val: 'Home-Server · Docker · Pi-hole · NAS' },
+          { key: 'TOOLS', val: 'n8n · Git · Linux · Fish Shell' },
+        ].map((item) => (
+          <div class="flex gap-6 py-4 border-b-2 border-dark/10 group hover:border-dark/30 transition-colors">
+            <span class="font-mono text-xs text-dark/30 uppercase tracking-widest w-20 shrink-0 pt-0.5">{item.key}</span>
+            <span class="font-mono text-xs text-dark/80 group-hover:text-dark transition-colors">{item.val}</span>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
     </div>
+
   </div>
 </section>

@@ -4,36 +4,22 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Barlow Condensed', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        bg: '#0a0a0a',
-        surface: '#111111',
-        border: '#222222',
-        accent: '#00d4ff',
-        'accent-dim': '#0099bb',
-        muted: '#666666',
-        text: '#e8e8e8',
+        dark: '#080808',
+        cream: '#f0ece3',
+        red: '#FF3B2F',
+        'border-dark': '#1e1e1e',
+        'border-cream': '#ccc7bc',
       },
-      animation: {
-        'fade-up': 'fadeUp 0.6s ease forwards',
-        'fade-in': 'fadeIn 0.4s ease forwards',
-        blink: 'blink 1s step-end infinite',
+      backgroundImage: {
+        'dots-dark': 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
+        'dots-light': 'radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)',
       },
-      keyframes: {
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
-        },
+      backgroundSize: {
+        'dots': '28px 28px',
       },
     },
   },

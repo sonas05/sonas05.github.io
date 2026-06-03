@@ -1,62 +1,76 @@
 ---
 ---
 
-<section id="education" class="py-24 px-6 max-w-5xl mx-auto">
-  <div class="reveal">
-    <p class="section-label">04 / Werdegang</p>
-    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">
-      Ausbildung & Erfahrung
-    </h2>
-  </div>
+<section id="education" class="dots-light">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
 
-  <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
-    <div class="reveal reveal-delay-1">
-      <h3 class="text-xs font-mono tracking-widest text-muted uppercase mb-6 pb-3 border-b border-border">
-        Ausbildung
-      </h3>
-      <div class="space-y-6">
-        <div class="relative pl-5 border-l border-border hover:border-accent/40 transition-colors duration-300">
-          <p class="text-sm font-semibold text-text mb-1">Duales Studium Informatik</p>
-          <p class="text-xs font-mono text-accent mb-2">2023 – heute · 4. Semester</p>
-          <ul class="text-xs text-muted space-y-1">
-            <li>› Schwerpunkt: Internet- & Webtechnologien</li>
-            <li>› Grundlagen bis moderne Frameworks</li>
-            <li>› Parallele Praxisphasen im Unternehmen</li>
+    <div class="reveal mb-16 border-b-2 border-dark/10 pb-6">
+      <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-3">WERDEGANG //</p>
+      <h2 class="display-italic text-dark" style="font-size: clamp(2.5rem, 7vw, 5.5rem);">
+        EDUCATION<br />&amp; XP.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-x-10 gap-y-10">
+
+      <!-- Ausbildung -->
+      <div class="reveal reveal-delay-1">
+        <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-6 pb-3 border-b-2 border-dark/10">
+          AUSBILDUNG
+        </p>
+        <div class="pl-4 border-l-2 border-dark">
+          <p class="font-mono text-xs text-dark uppercase tracking-wide font-bold mb-1">
+            Duales Studium Informatik
+          </p>
+          <p class="font-mono text-xs text-red uppercase tracking-widest mb-3">2023 – HEUTE · 4. SEM.</p>
+          <ul class="space-y-1">
+            {['Schwerpunkt: Internet- & Webtechnologien', 'Parallele Praxisphasen im Unternehmen', 'Grundlagen bis moderne Frameworks'].map(item => (
+              <li class="font-mono text-xs text-dark/50">› {item}</li>
+            ))}
           </ul>
         </div>
       </div>
-    </div>
 
-    <div class="reveal reveal-delay-2">
-      <h3 class="text-xs font-mono tracking-widest text-muted uppercase mb-6 pb-3 border-b border-border">
-        Erfahrung
-      </h3>
-      <div class="space-y-6">
-        <div class="relative pl-5 border-l border-border hover:border-accent/40 transition-colors duration-300">
-          <p class="text-sm font-semibold text-text mb-1">Praxispartner (Duales Studium)</p>
-          <p class="text-xs font-mono text-accent mb-2">2023 – heute</p>
-          <ul class="text-xs text-muted space-y-1">
-            <li>› Softwareentwicklung im professionellen Umfeld</li>
-            <li>› Praktische Anwendung von Studieninhalten</li>
+      <!-- Erfahrung -->
+      <div class="reveal reveal-delay-2">
+        <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-6 pb-3 border-b-2 border-dark/10">
+          ERFAHRUNG
+        </p>
+        <div class="pl-4 border-l-2 border-dark">
+          <p class="font-mono text-xs text-dark uppercase tracking-wide font-bold mb-1">
+            Praxispartner
+          </p>
+          <p class="font-mono text-xs text-red uppercase tracking-widest mb-3">2023 – HEUTE</p>
+          <ul class="space-y-1">
+            {['Softwareentwicklung im professionellen Umfeld', 'Praktische Anwendung von Studieninhalten', 'Teamarbeit und Projektarbeit'].map(item => (
+              <li class="font-mono text-xs text-dark/50">› {item}</li>
+            ))}
           </ul>
         </div>
       </div>
-    </div>
 
-    <div class="reveal reveal-delay-3 md:col-span-2">
-      <h3 class="text-xs font-mono tracking-widest text-muted uppercase mb-6 pb-3 border-b border-border">
-        Zertifikate & Weiterbildung
-      </h3>
-      <div class="grid sm:grid-cols-2 gap-3">
-        <div class="p-4 border border-border bg-surface/30 opacity-50">
-          <p class="text-sm text-text mb-1">Cybersecurity Zertifikate</p>
-          <p class="text-xs text-muted font-mono">Geplant · In Vorbereitung</p>
-        </div>
-        <div class="p-4 border border-border bg-surface/30">
-          <p class="text-sm text-text mb-1">Self-Directed Learning</p>
-          <p class="text-xs text-muted font-mono">TryHackMe · HackTheBox · laufend</p>
+      <!-- Zertifikate -->
+      <div class="reveal reveal-delay-3">
+        <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-6 pb-3 border-b-2 border-dark/10">
+          ZERTIFIKATE
+        </p>
+        <div class="space-y-4">
+          <div class="pl-4 border-l-2 border-dark/20">
+            <p class="font-mono text-xs text-dark/40 uppercase tracking-wide font-bold mb-1">
+              Cybersecurity Certs
+            </p>
+            <p class="font-mono text-xs text-dark/30 uppercase tracking-widest">GEPLANT · IN VORBEREITUNG</p>
+          </div>
+          <div class="pl-4 border-l-2 border-dark">
+            <p class="font-mono text-xs text-dark uppercase tracking-wide font-bold mb-1">
+              Self-Directed Learning
+            </p>
+            <p class="font-mono text-xs text-red uppercase tracking-widest">TRYHACKME · HACKTHEBOX</p>
+          </div>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>

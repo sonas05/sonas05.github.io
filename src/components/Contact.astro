@@ -1,101 +1,99 @@
 ---
 ---
 
-<section id="contact" class="py-24 px-6 max-w-5xl mx-auto">
-  <div class="reveal">
-    <p class="section-label">05 / Kontakt</p>
-    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-      Lass uns reden
-    </h2>
-    <p class="text-text/50 text-sm max-w-md mb-12 leading-relaxed">
-      Offen für Gespräche über Projekte, Kooperationen oder interessante Möglichkeiten.
-    </p>
-  </div>
+<section id="contact" class="dots-light">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
 
-  <div class="grid md:grid-cols-2 gap-8">
-    <div class="reveal reveal-delay-1 space-y-4">
-      {[
-        {
-          label: 'E-Mail',
-          value: 'kilian_mueller@tutamail.com',
-          href: 'mailto:kilian_mueller@tutamail.com',
-          mono: true,
-        },
-        {
-          label: 'GitHub',
-          value: 'github.com/sonas05',
-          href: 'https://github.com/sonas05',
-          mono: true,
-        },
-        {
-          label: 'LinkedIn',
-          value: 'Kilian Mueller',
-          href: 'https://www.linkedin.com/in/kilian-m%C3%BCller-b9a5b9358/',
-          mono: false,
-          muted: true,
-        },
-      ].map((item) => (
-        <a
-          href={item.href}
-          target={item.href.startsWith('http') ? '_blank' : undefined}
-          rel="noopener"
-          class="flex items-center justify-between p-5 border border-border hover:border-accent/40 hover:bg-surface/50 transition-all duration-200 group"
-        >
-          <div>
-            <p class="text-xs text-muted font-mono uppercase tracking-widest mb-1">{item.label}</p>
-            <p class={`text-sm ${item.mono ? 'font-mono' : ''} ${item.muted ? 'text-muted/50' : 'text-text/80'} group-hover:text-accent transition-colors duration-200`}>
-              {item.value}
-            </p>
-          </div>
-          <svg class="text-muted group-hover:text-accent transition-colors duration-200" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      ))}
+    <div class="reveal mb-16 border-b-2 border-dark/10 pb-6">
+      <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-3">LET'S_TALK //</p>
+      <h2 class="display-italic text-dark" style="font-size: clamp(2.5rem, 7vw, 5.5rem);">
+        KONTAKT.
+      </h2>
     </div>
 
-    <div class="reveal reveal-delay-2 p-6 border border-border bg-surface/20">
-      <p class="text-xs font-mono text-muted uppercase tracking-widest mb-5">Schnellnachricht</p>
-      <form
-        id="contact-form"
-        class="space-y-4"
-        onsubmit="handleSubmit(event)"
-      >
+    <div class="grid md:grid-cols-2 gap-16">
+
+      <!-- Links + CTA block -->
+      <div class="reveal reveal-delay-1 flex flex-col justify-between gap-10">
+
+        <div class="space-y-0">
+          {[
+            { key: 'EMAIL', val: 'kilian_mueller@tutamail.com', href: 'mailto:kilian_mueller@tutamail.com' },
+            { key: 'GITHUB', val: 'github.com/sonas05', href: 'https://github.com/sonas05' },
+            { key: 'LINKEDIN', val: 'Kilian Mueller', href: 'https://www.linkedin.com/in/kilian-m%C3%BCller-b9a5b9358/' },
+          ].map((item) => (
+            <a
+              href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener"
+              class="flex items-center justify-between py-4 border-b-2 border-dark/10 group hover:border-dark/40 transition-colors"
+            >
+              <div>
+                <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-0.5">{item.key}</p>
+                <p class="font-mono text-xs text-dark/70 group-hover:text-dark transition-colors">{item.val}</p>
+              </div>
+              <span class="text-red font-mono text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- GET_IN_TOUCH brutal button -->
         <div>
+          <div class="relative inline-block w-full">
+            <div class="absolute inset-0 translate-x-[6px] translate-y-[6px] bg-dark border-2 border-dark"></div>
+            <a
+              href="mailto:kilian_mueller@tutamail.com"
+              class="relative flex items-center justify-between border-2 border-dark bg-cream text-dark font-mono text-xs uppercase tracking-widest px-6 py-4 hover:bg-dark hover:text-cream transition-colors duration-150 group"
+            >
+              <span>GET_IN_TOUCH</span>
+              <span class="text-red group-hover:text-cream transition-colors">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick message form -->
+      <div class="reveal reveal-delay-2">
+        <p class="font-mono text-xs text-dark/30 uppercase tracking-widest mb-5">QUICK_MESSAGE //</p>
+        <form id="contact-form" class="space-y-3" onsubmit="handleSubmit(event)">
           <input
             type="text"
             name="name"
-            placeholder="Name"
+            placeholder="NAME"
             required
-            class="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-muted/40 focus:outline-none focus:border-accent/50 transition-colors duration-200 font-mono"
+            class="w-full bg-transparent border-b-2 border-dark/20 px-0 py-3 font-mono text-xs text-dark placeholder:text-dark/25 focus:outline-none focus:border-dark transition-colors uppercase tracking-widest"
           />
-        </div>
-        <div>
           <input
             type="email"
             name="email"
-            placeholder="E-Mail"
+            placeholder="EMAIL"
             required
-            class="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-muted/40 focus:outline-none focus:border-accent/50 transition-colors duration-200 font-mono"
+            class="w-full bg-transparent border-b-2 border-dark/20 px-0 py-3 font-mono text-xs text-dark placeholder:text-dark/25 focus:outline-none focus:border-dark transition-colors uppercase tracking-widest"
           />
-        </div>
-        <div>
           <textarea
             name="message"
-            placeholder="Nachricht..."
-            rows="4"
+            placeholder="NACHRICHT..."
+            rows="5"
             required
-            class="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-muted/40 focus:outline-none focus:border-accent/50 transition-colors duration-200 font-mono resize-none"
+            class="w-full bg-transparent border-b-2 border-dark/20 px-0 py-3 font-mono text-xs text-dark placeholder:text-dark/25 focus:outline-none focus:border-dark transition-colors resize-none tracking-wide"
           ></textarea>
-        </div>
-        <button
-          type="submit"
-          class="w-full bg-accent text-bg text-sm font-semibold py-3 hover:bg-accent-dim transition-colors duration-200 tracking-wide"
-        >
-          Senden →
-        </button>
-      </form>
+          <div class="pt-2">
+            <div class="relative inline-block w-full">
+              <div class="absolute inset-0 translate-x-[5px] translate-y-[5px] bg-dark border-2 border-dark"></div>
+              <button
+                type="submit"
+                class="relative w-full border-2 border-dark bg-dark text-cream font-mono text-xs uppercase tracking-widest py-3 hover:bg-cream hover:text-dark transition-colors duration-150"
+              >
+                SENDEN →
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
     </div>
+
   </div>
 </section>
 

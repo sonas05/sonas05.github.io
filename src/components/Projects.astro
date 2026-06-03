@@ -2,128 +2,113 @@
 const projects = [
   {
     number: '01',
-    title: 'Fitnesstracker',
+    title: 'FITNESSTRACKER',
+    category: 'FULLSTACK WEB APP',
     description:
-      'Fullstack-Webanwendung zur Erfassung und Auswertung von Trainingseinheiten. Entwickelt im Rahmen des Studiums — vollständiger Zyklus von Konzeption bis Deployment.',
-    stack: ['React 18', 'TypeScript', 'Tailwind CSS', 'Flask', 'MongoDB'],
-    highlights: [
-      'Typsichere Komponenten mit React + TypeScript',
-      'REST-API mit Flask, NoSQL-Datenhaltung in MongoDB',
-      'Vollständiger Entwicklungszyklus: Design → Build → Deploy',
-    ],
+      'Webanwendung zur Erfassung und Auswertung von Trainingseinheiten. Vollständiger Entwicklungszyklus von der Konzeption bis zum Deployment — typsichere Komponenten, REST-API und NoSQL-Datenhaltung.',
+    stack: ['REACT 18', 'TYPESCRIPT', 'TAILWIND', 'FLASK', 'MONGODB'],
     github: '#',
-    demo: null,
     wip: true,
   },
   {
     number: '02',
-    title: 'Mitarbeiterzeiterfassung',
+    title: 'ZEITERFASSUNG',
+    category: 'FULLSTACK WEB APP',
     description:
-      'Web-Anwendung zur Protokollierung von Mitarbeiterzeiten. Bewusster Verzicht auf React: reines Tailwind CSS für eine schlanke, wartbare UI ohne Framework-Overhead.',
-    stack: ['Tailwind CSS', 'JavaScript', 'Flask', 'MongoDB'],
-    highlights: [
-      'Bewusste Entscheidung gegen React-Overhead',
-      'Schlanke UI mit Tailwind ohne Build-Komplexität',
-      'REST-Backend mit Flask',
-    ],
+      'Mitarbeiterzeiterfassung ohne Framework-Overhead. Bewusste Entscheidung gegen React: reines Tailwind CSS für eine schlanke, wartbare UI — zeigt dass Toolwahl Kontext braucht.',
+    stack: ['TAILWIND', 'JAVASCRIPT', 'FLASK', 'MONGODB'],
     github: '#',
-    demo: null,
     wip: true,
   },
   {
     number: '03',
-    title: 'Home-Server Setup',
+    title: 'HOME SERVER',
+    category: 'DEVOPS // SELF-HOSTING',
     description:
-      'Self-Hosted Infrastructure auf einem Ubuntu 24.04 Server: Pi-hole für DNS-Adblocking, NAS für lokale Datenhaltung, alles containerisiert mit Docker.',
-    stack: ['Docker', 'Linux', 'Pi-hole', 'Ubuntu 24.04'],
-    highlights: [
-      'Docker-Stack für alle Dienste',
-      'Pi-hole: DNS-Server + Netzwerk-Adblocking',
-      'NAS-Setup für lokale Datenhaltung',
-    ],
+      'Self-Hosted Infrastructure auf Ubuntu 24.04: Pi-hole für DNS-Adblocking, NAS für lokale Datenhaltung, alles containerisiert mit Docker. Eigeninitiative außerhalb der Uni.',
+    stack: ['DOCKER', 'LINUX', 'PI-HOLE', 'UBUNTU'],
     github: '#',
-    demo: null,
     wip: false,
   },
 ];
 ---
 
-<section id="projects" class="py-24 px-6 max-w-5xl mx-auto">
-  <div class="reveal">
-    <p class="section-label">03 / Projekte</p>
-    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">
-      Was ich gebaut habe
-    </h2>
-  </div>
+<section id="projects" class="dots-dark">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
 
-  <div class="space-y-6">
-    {projects.map((project, i) => (
-      <article class={`reveal reveal-delay-${i + 1} group border border-border hover:border-accent/30 transition-all duration-300 p-6 md:p-8 bg-surface/30 hover:bg-surface/60`}>
-        <div class="flex items-start justify-between gap-4 mb-5">
-          <div class="flex items-start gap-4">
-            <span class="font-mono text-xs text-muted mt-1.5 shrink-0">{project.number}</span>
+    <div class="reveal flex items-end justify-between mb-16 border-b-2 border-cream/10 pb-6">
+      <div>
+        <p class="font-mono text-xs text-cream/30 uppercase tracking-widest mb-3">CORE_FOCUS //</p>
+        <h2 class="display-italic text-cream" style="font-size: clamp(2.5rem, 7vw, 5.5rem);">
+          SELECTED<br />WORK.
+        </h2>
+      </div>
+      <span class="font-mono text-xs text-cream/20 tracking-widest hidden md:block">
+        {projects.length} PROJECTS
+      </span>
+    </div>
+
+    <div class="space-y-0">
+      {projects.map((p, i) => (
+        <article class={`reveal reveal-delay-${i + 1} grid md:grid-cols-2 gap-8 py-14 border-b-2 border-cream/10 group`}>
+
+          <!-- Left: text -->
+          <div class="flex flex-col justify-between">
             <div>
-              <div class="flex items-center gap-3">
-                <h3 class="text-xl font-semibold text-text group-hover:text-accent transition-colors duration-200">
-                  {project.title}
-                </h3>
-                {project.wip && (
-                  <span class="text-xs font-mono px-2 py-0.5 border border-yellow-500/30 text-yellow-500/70">
-                    WIP
-                  </span>
+              <!-- Project label box -->
+              <div class="mb-5 flex items-center gap-3">
+                <span class="label-tag text-dark bg-cream border-cream text-xs">
+                  PROJECT_{p.number}
+                </span>
+                {p.wip && (
+                  <span class="label-tag text-red border-red text-xs">WIP</span>
                 )}
               </div>
+
+              <!-- Title -->
+              <h3 class="display-italic text-cream mb-3 group-hover:text-red transition-colors duration-200"
+                  style="font-size: clamp(2rem, 5vw, 3.5rem);">
+                {p.title}
+              </h3>
+
+              <!-- Category -->
+              <p class="font-mono text-xs text-cream/30 uppercase tracking-widest mb-5">{p.category}</p>
+
+              <!-- Description with left accent bar -->
+              <div class="flex gap-4 mb-6">
+                <div class="w-0.5 bg-red shrink-0 mt-1"></div>
+                <p class="font-mono text-xs text-cream/50 leading-relaxed">{p.description}</p>
+              </div>
+            </div>
+
+            <!-- Tags + link -->
+            <div class="flex flex-wrap gap-2 items-center">
+              {p.stack.map((tech) => (
+                <span class="tech-pill text-cream/40 border-cream/20">{tech}</span>
+              ))}
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener"
+                class="ml-auto font-mono text-xs text-red hover:text-cream transition-colors uppercase tracking-widest"
+              >
+                OPEN_GITHUB →
+              </a>
             </div>
           </div>
-          <div class="flex items-center gap-3 shrink-0">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener"
-                class="text-muted hover:text-accent transition-colors duration-200"
-                aria-label="GitHub"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                </svg>
-              </a>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener"
-                class="text-muted hover:text-accent transition-colors duration-200"
-                aria-label="Live Demo"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 2H2v12h12v-4M10 2h4v4M14 2L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            )}
+
+          <!-- Right: screenshot placeholder -->
+          <div class="hidden md:flex items-center justify-center">
+            <div class="border-2 border-cream/15 w-full aspect-video flex items-center justify-center group-hover:border-cream/30 transition-colors duration-300">
+              <span class="font-mono text-xs text-cream/15 uppercase tracking-widest">
+                SCREENSHOT // COMING SOON
+              </span>
+            </div>
           </div>
-        </div>
 
-        <p class="text-text/60 text-sm leading-relaxed mb-5 ml-8">
-          {project.description}
-        </p>
+        </article>
+      ))}
+    </div>
 
-        <div class="ml-8 mb-5 space-y-1.5">
-          {project.highlights.map((h) => (
-            <p class="text-xs text-muted flex items-start gap-2">
-              <span class="text-accent/60 mt-0.5 shrink-0">›</span>
-              {h}
-            </p>
-          ))}
-        </div>
-
-        <div class="ml-8 flex flex-wrap gap-2">
-          {project.stack.map((tech) => (
-            <span class="tag">{tech}</span>
-          ))}
-        </div>
-      </article>
-    ))}
   </div>
 </section>

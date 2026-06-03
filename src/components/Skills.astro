@@ -1,88 +1,90 @@
 ---
 const categories = [
   {
-    title: 'Sprachen',
+    key: 'SPRACHEN',
     items: [
-      { name: 'C++', icon: 'devicon-cplusplus-plain', level: 'Fortgeschritten' },
-      { name: 'TypeScript', icon: 'devicon-typescript-plain', level: 'Sicher' },
-      { name: 'Python', icon: 'devicon-python-plain', level: 'Sicher' },
-      { name: 'JavaScript', icon: 'devicon-javascript-plain', level: 'Sicher' },
-      { name: 'HTML/CSS', icon: 'devicon-html5-plain', level: 'Sicher' },
+      { name: 'C++', icon: 'devicon-cplusplus-plain', level: 'FORTGESCHRITTEN' },
+      { name: 'TypeScript', icon: 'devicon-typescript-plain', level: 'SICHER' },
+      { name: 'Python', icon: 'devicon-python-plain', level: 'SICHER' },
+      { name: 'JavaScript', icon: 'devicon-javascript-plain', level: 'SICHER' },
+      { name: 'HTML / CSS', icon: 'devicon-html5-plain', level: 'SICHER' },
     ],
   },
   {
-    title: 'Frontend',
+    key: 'FRONTEND',
     items: [
-      { name: 'React 18', icon: 'devicon-react-original', level: 'Sicher' },
-      { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain', level: 'Sicher' },
-      { name: 'Vite', icon: 'devicon-vitejs-plain', level: 'Sicher' },
+      { name: 'React 18', icon: 'devicon-react-original', level: 'SICHER' },
+      { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain', level: 'SICHER' },
+      { name: 'Vite', icon: 'devicon-vitejs-plain', level: 'SICHER' },
     ],
   },
   {
-    title: 'Backend & DB',
+    key: 'BACKEND / DB',
     items: [
-      { name: 'Flask', icon: 'devicon-flask-original', level: 'Sicher' },
-      { name: 'MongoDB', icon: 'devicon-mongodb-plain', level: 'Sicher' },
-      { name: 'REST APIs', icon: 'devicon-fastapi-plain', level: 'Sicher' },
+      { name: 'Flask', icon: 'devicon-flask-original', level: 'SICHER' },
+      { name: 'MongoDB', icon: 'devicon-mongodb-plain', level: 'SICHER' },
+      { name: 'REST APIs', icon: 'devicon-fastapi-plain', level: 'SICHER' },
     ],
   },
   {
-    title: 'DevOps & Tools',
+    key: 'DEVOPS / SYS',
     items: [
-      { name: 'Docker', icon: 'devicon-docker-plain', level: 'Sicher' },
-      { name: 'Linux', icon: 'devicon-linux-plain', level: 'Sicher' },
-      { name: 'Git', icon: 'devicon-git-plain', level: 'Sicher' },
-      { name: 'Fish Shell', icon: 'devicon-bash-plain', level: 'Grundlagen' },
-      { name: 'n8n', icon: 'devicon-nodejs-plain', level: 'Grundlagen' },
+      { name: 'Docker', icon: 'devicon-docker-plain', level: 'SICHER' },
+      { name: 'Linux', icon: 'devicon-linux-plain', level: 'SICHER' },
+      { name: 'Git', icon: 'devicon-git-plain', level: 'SICHER' },
+      { name: 'Fish Shell', icon: 'devicon-bash-plain', level: 'GRUNDLAGEN' },
+      { name: 'n8n', icon: 'devicon-nodejs-plain', level: 'GRUNDLAGEN' },
     ],
   },
 ];
 ---
 
-<section id="skills" class="py-24 px-6 max-w-5xl mx-auto">
-  <div class="reveal">
-    <p class="section-label">02 / Skills</p>
-    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-      Tech Stack
-    </h2>
-    <p class="text-text/50 text-sm font-mono mb-12">Nur Technologien, die ich wirklich im Einsatz hatte.</p>
-  </div>
+<section id="skills" class="dots-dark">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
 
-  <div class="grid md:grid-cols-2 gap-8">
-    {categories.map((cat, i) => (
-      <div class={`reveal reveal-delay-${(i % 4) + 1}`}>
-        <h3 class="text-xs font-mono tracking-widest text-muted uppercase mb-4 pb-3 border-b border-border">
-          {cat.title}
-        </h3>
-        <div class="space-y-2">
-          {cat.items.map((item) => (
-            <div class="flex items-center gap-3 p-3 hover:bg-surface transition-colors duration-200 group rounded">
-              <i class={`${item.icon} text-2xl text-muted group-hover:text-accent transition-colors duration-200`}></i>
-              <div class="flex-1 min-w-0">
-                <span class="text-sm text-text/80 group-hover:text-text transition-colors duration-200">{item.name}</span>
+    <div class="reveal mb-16 border-b-2 border-cream/10 pb-6">
+      <p class="font-mono text-xs text-cream/30 uppercase tracking-widest mb-3">TECH_STACK //</p>
+      <h2 class="display-italic text-cream" style="font-size: clamp(2.5rem, 7vw, 5.5rem);">
+        SKILLS.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-16 gap-y-12">
+      {categories.map((cat, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`}>
+          <p class="font-mono text-xs text-cream/30 uppercase tracking-widest mb-5 pb-3 border-b border-cream/10">
+            {cat.key}
+          </p>
+          <div class="space-y-0">
+            {cat.items.map((item) => (
+              <div class="flex items-center gap-4 py-3 border-b border-cream/5 group hover:border-cream/20 transition-colors">
+                <i class={`${item.icon} text-xl text-cream/30 group-hover:text-cream transition-colors shrink-0`}></i>
+                <span class="font-mono text-xs text-cream/60 flex-1 group-hover:text-cream transition-colors uppercase tracking-wide">
+                  {item.name}
+                </span>
+                <span class={`font-mono text-xs tracking-widest ${
+                  item.level === 'FORTGESCHRITTEN' ? 'text-red' :
+                  item.level === 'SICHER' ? 'text-cream/30' :
+                  'text-cream/15'
+                }`}>
+                  {item.level}
+                </span>
               </div>
-              <span class={`text-xs font-mono px-2 py-0.5 rounded border ${
-                item.level === 'Fortgeschritten'
-                  ? 'border-accent/40 text-accent'
-                  : item.level === 'Sicher'
-                  ? 'border-border text-muted'
-                  : 'border-border/50 text-muted/50'
-              }`}>
-                {item.level}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-
-  <div class="reveal mt-10 p-5 border border-border/50 bg-surface">
-    <p class="text-xs font-mono text-muted uppercase tracking-widest mb-3">Im Aufbau</p>
-    <div class="flex flex-wrap gap-2">
-      {['Pentesting', 'AI Security', 'TryHackMe', 'HackTheBox', 'Wireshark', 'nmap', 'Burp Suite'].map(t => (
-        <span class="tag opacity-60">{t}</span>
       ))}
     </div>
+
+    <!-- Im Aufbau -->
+    <div class="reveal mt-14 pt-10 border-t-2 border-cream/10">
+      <p class="font-mono text-xs text-cream/30 uppercase tracking-widest mb-4">IM_AUFBAU //</p>
+      <div class="flex flex-wrap gap-2">
+        {['PENTESTING', 'AI SECURITY', 'TRYHACKME', 'HACKTHEBOX', 'WIRESHARK', 'NMAP', 'BURP SUITE'].map((t) => (
+          <span class="tech-pill text-cream/20 border-cream/10">{t}</span>
+        ))}
+      </div>
+    </div>
+
   </div>
 </section>
