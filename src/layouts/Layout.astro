@@ -32,6 +32,12 @@ const {
   <body class="bg-dark font-mono antialiased">
     <slot />
     <script>
+      console.log(
+        '%c\n ██╗  ██╗███╗   ███╗\n ██║ ██╔╝████╗ ████║\n █████╔╝ ██╔████╔██║\n ██╔═██╗ ██║╚██╔╝██║\n ██║  ██╗██║ ╚═╝ ██║\n ╚═╝  ╚═╝╚═╝     ╚═╝\n\n Tipp: Manchmal lohnt es sich, hartnäckig zu sein.\n',
+        'font-family: monospace; color: #FF3B2F;'
+      );
+    </script>
+    <script>
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

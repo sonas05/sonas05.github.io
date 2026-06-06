@@ -5,7 +5,7 @@
   <div class="max-w-6xl mx-auto px-6 md:px-12 py-20">
 
     <!-- Giant name with thick underline — plakat-style -->
-    <div class="mb-16">
+    <div id="footer-name" class="mb-16" style="cursor: default; user-select: none;">
       <h2 class="display-italic text-cream" style="font-size: clamp(4rem, 14vw, 12rem);">
         KILIAN
       </h2>
@@ -17,6 +17,24 @@
         <div class="h-3 md:h-5 bg-cream mt-1 w-full"></div>
       </div>
     </div>
+
+    <script>
+      const footerName = document.getElementById('footer-name');
+      let clickCount = 0;
+      let resetTimer = null;
+
+      footerName.addEventListener('click', () => {
+        clickCount++;
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => { clickCount = 0; }, 3000);
+
+        if (clickCount >= 7) {
+          clickCount = 0;
+          clearTimeout(resetTimer);
+          if (typeof window.openEasterEgg === 'function') window.openEasterEgg();
+        }
+      });
+    </script>
 
     <!-- Bottom row -->
     <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
