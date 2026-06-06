@@ -1,0 +1,229 @@
+---
+---
+
+<div
+  id="easter-egg-overlay"
+  class="fixed inset-0 z-50 items-center justify-center"
+  style="display: none; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);"
+>
+  <div
+    id="easter-egg-terminal"
+    style="width: 520px; max-width: calc(100vw - 2rem); background: #080808; border: 1px solid #f0ece3; font-family: 'JetBrains Mono', monospace;"
+  >
+    <!-- Title bar -->
+    <div
+      class="flex items-center justify-between px-3 py-2"
+      style="border-bottom: 1px solid rgba(240,236,227,0.12);"
+    >
+      <span style="font-size: 0.62rem; color: rgba(240,236,227,0.45); letter-spacing: 0.04em;">
+        [KILIAN@PORTFOLIO ~]$ snake
+      </span>
+      <button
+        id="easter-egg-close"
+        style="color: #FF3B2F; opacity: 0.7; font-size: 1.1rem; line-height: 1; cursor: pointer; background: none; border: none; padding: 0 2px; transition: opacity 0.15s;"
+        onmouseover="this.style.opacity='1'"
+        onmouseout="this.style.opacity='0.7'"
+      >×</button>
+    </div>
+
+    <!-- Loading state -->
+    <div id="snake-loading" class="px-4 py-4" style="font-size: 0.68rem; color: rgba(240,236,227,0.4);">
+      &gt; loading snake...<span class="loading-cursor">_</span>
+    </div>
+
+    <!-- Game area -->
+    <div id="snake-game" style="display: none; padding: 10px 14px 14px;">
+      <pre
+        id="snake-canvas"
+        class="select-none"
+        style="font-size: 0.68rem; line-height: 1.15; color: rgba(240,236,227,0.75); margin: 0; font-family: inherit;"
+      ></pre>
+      <div id="snake-score" style="margin-top: 8px; font-size: 0.58rem; color: rgba(240,236,227,0.32); letter-spacing: 0.06em;">
+        SCORE: <span id="score-value">000</span> &nbsp;·&nbsp; ↑↓←→ BEWEGEN &nbsp;·&nbsp; Q BEENDEN
+      </div>
+    </div>
+
+    <!-- Game over -->
+    <div id="snake-gameover" style="display: none; padding: 14px 16px 18px;">
+      <div style="color: #FF3B2F; font-size: 0.72rem; margin-bottom: 10px;" class="gameover-blink">
+        &gt; GAME OVER
+      </div>
+      <div style="font-size: 0.6rem; color: rgba(240,236,227,0.38); letter-spacing: 0.04em;">
+        &gt; SCORE: <span id="final-score-value">000</span> — VERSUCH ES NOCHMAL. &nbsp; [R] RESTART &nbsp; [Q] QUIT
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes cur-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes apple-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+  @keyframes gameover-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .loading-cursor {
+    animation: cur-blink 0.9s step-end infinite;
+  }
+  .snake-apple {
+    color: #FF3B2F;
+    animation: apple-blink 0.75s step-end infinite;
+  }
+  .gameover-blink {
+    animation: gameover-flash 0.6s step-end 5;
+  }
+</style>
+
+<script>
+  const overlay = document.getElementById('easter-egg-overlay');
+  const closeBtn = document.getElementById('easter-egg-close');
+  const loadingEl = document.getElementById('snake-loading');
+  const gameEl = document.getElementById('snake-game');
+  const gameoverEl = document.getElementById('snake-gameover');
+  const canvas = document.getElementById('snake-canvas');
+  const scoreValueEl = document.getElementById('score-value');
+  const finalScoreEl = document.getElementById('final-score-value');
+
+  const COLS = 20;
+  const ROWS = 16;
+  const SPEED = 145;
+
+  let snake = [];
+  let direction = { x: 1, y: 0 };
+  let nextDirection = { x: 1, y: 0 };
+  let apple = { x: 0, y: 0 };
+  let score = 0;
+  let gameInterval = null;
+
+  function fmt(n) {
+    return String(n).padStart(3, '0');
+  }
+
+  function randomApple() {
+    let pos;
+    do {
+      pos = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
+    } while (snake.some(s => s.x === pos.x && s.y === pos.y));
+    return pos;
+  }
+
+  function initGame() {
+    snake = [{ x: 10, y: 8 }, { x: 9, y: 8 }, { x: 8, y: 8 }];
+    direction = { x: 1, y: 0 };
+    nextDirection = { x: 1, y: 0 };
+    apple = randomApple();
+    score = 0;
+    scoreValueEl.textContent = '000';
+
+    if (gameInterval) clearInterval(gameInterval);
+    gameInterval = setInterval(tick, SPEED);
+
+    loadingEl.style.display = 'none';
+    gameoverEl.style.display = 'none';
+    gameEl.style.display = 'block';
+    render();
+  }
+
+  function tick() {
+    direction = nextDirection;
+    const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+
+    if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS) { endGame(); return; }
+    if (snake.some(s => s.x === head.x && s.y === head.y)) { endGame(); return; }
+
+    snake.unshift(head);
+
+    if (head.x === apple.x && head.y === apple.y) {
+      score++;
+      scoreValueEl.textContent = fmt(score);
+      apple = randomApple();
+    } else {
+      snake.pop();
+    }
+    render();
+  }
+
+  function endGame() {
+    if (gameInterval) { clearInterval(gameInterval); gameInterval = null; }
+    finalScoreEl.textContent = fmt(score);
+    gameEl.style.display = 'none';
+    gameoverEl.style.display = 'block';
+  }
+
+  function render() {
+    const grid = Array.from({ length: ROWS }, () => Array(COLS).fill(' '));
+    grid[apple.y][apple.x] = 'apple';
+    for (let i = snake.length - 1; i >= 1; i--) {
+      const s = snake[i];
+      if (s.x >= 0 && s.x < COLS && s.y >= 0 && s.y < ROWS) grid[s.y][s.x] = 'body';
+    }
+    const h = snake[0];
+    if (h.x >= 0 && h.x < COLS && h.y >= 0 && h.y < ROWS) grid[h.y][h.x] = 'head';
+
+    let html = '┌' + '─'.repeat(COLS) + '┐\n';
+    for (let y = 0; y < ROWS; y++) {
+      html += '│';
+      for (let x = 0; x < COLS; x++) {
+        const c = grid[y][x];
+        if (c === 'head') html += '<span style="color:#FF3B2F">@</span>';
+        else if (c === 'body') html += 'O';
+        else if (c === 'apple') html += '<span class="snake-apple">*</span>';
+        else html += ' ';
+      }
+      html += '│\n';
+    }
+    html += '└' + '─'.repeat(COLS) + '┘';
+    canvas.innerHTML = html;
+  }
+
+  function openEasterEgg() {
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    loadingEl.style.display = 'block';
+    gameEl.style.display = 'none';
+    gameoverEl.style.display = 'none';
+    setTimeout(initGame, 650);
+  }
+
+  function closeEasterEgg() {
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+    if (gameInterval) { clearInterval(gameInterval); gameInterval = null; }
+  }
+
+  window.openEasterEgg = openEasterEgg;
+
+  closeBtn.addEventListener('click', closeEasterEgg);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeEasterEgg(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (overlay.style.display === 'none') return;
+    const isGameOver = gameoverEl.style.display === 'block';
+
+    switch (e.key) {
+      case 'ArrowUp': case 'w': case 'W':
+        if (direction.y !== 1) nextDirection = { x: 0, y: -1 };
+        e.preventDefault(); break;
+      case 'ArrowDown': case 's': case 'S':
+        if (direction.y !== -1) nextDirection = { x: 0, y: 1 };
+        e.preventDefault(); break;
+      case 'ArrowLeft': case 'a': case 'A':
+        if (direction.x !== 1) nextDirection = { x: -1, y: 0 };
+        e.preventDefault(); break;
+      case 'ArrowRight': case 'd': case 'D':
+        if (direction.x !== -1) nextDirection = { x: 1, y: 0 };
+        e.preventDefault(); break;
+      case 'r': case 'R':
+        if (isGameOver) { gameoverEl.style.display = 'none'; initGame(); }
+        break;
+      case 'q': case 'Q': case 'Escape':
+        closeEasterEgg(); break;
+    }
+  });
+</script>
