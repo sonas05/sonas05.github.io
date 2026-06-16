@@ -13,9 +13,9 @@
     <!-- Title bar -->
     <div
       class="flex items-center justify-between px-3 py-2"
-      style="border-bottom: 1px solid rgba(240,236,227,0.12);"
+      style="border-bottom: 1px solid rgba(240,236,227,0.25);"
     >
-      <span style="font-size: 0.62rem; color: rgba(240,236,227,0.45); letter-spacing: 0.04em;">
+      <span style="font-size: 0.62rem; color: rgba(240,236,227,0.65); letter-spacing: 0.04em;">
         [KILIAN@PORTFOLIO ~]$ snake
       </span>
       <button
@@ -27,7 +27,7 @@
     </div>
 
     <!-- Loading state -->
-    <div id="snake-loading" class="px-4 py-4" style="font-size: 0.68rem; color: rgba(240,236,227,0.4);">
+    <div id="snake-loading" class="px-4 py-4" style="font-size: 0.68rem; color: rgba(240,236,227,0.85);">
       &gt; loading snake...<span class="loading-cursor">_</span>
     </div>
 
@@ -36,9 +36,9 @@
       <pre
         id="snake-canvas"
         class="select-none"
-        style="font-size: 0.68rem; line-height: 1.15; color: rgba(240,236,227,0.75); margin: 0; font-family: inherit;"
+        style="font-size: 0.68rem; line-height: 1.15; color: rgba(240,236,227,0.9); margin: 0; font-family: inherit;"
       ></pre>
-      <div id="snake-score" style="margin-top: 8px; font-size: 0.58rem; color: rgba(240,236,227,0.32); letter-spacing: 0.06em;">
+      <div id="snake-score" style="margin-top: 8px; font-size: 0.58rem; color: rgba(240,236,227,0.55); letter-spacing: 0.06em;">
         SCORE: <span id="score-value">000</span> &nbsp;·&nbsp; ↑↓←→ BEWEGEN &nbsp;·&nbsp; Q BEENDEN
       </div>
     </div>
@@ -48,7 +48,7 @@
       <div style="color: #FF3B2F; font-size: 0.72rem; margin-bottom: 10px;" class="gameover-blink">
         &gt; GAME OVER
       </div>
-      <div style="font-size: 0.6rem; color: rgba(240,236,227,0.38); letter-spacing: 0.04em;">
+      <div style="font-size: 0.6rem; color: rgba(240,236,227,0.7); letter-spacing: 0.04em;">
         &gt; SCORE: <span id="final-score-value">000</span> — VERSUCH ES NOCHMAL. &nbsp; [R] RESTART &nbsp; [Q] QUIT
       </div>
     </div>
