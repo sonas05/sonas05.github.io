@@ -71,6 +71,10 @@ const roadmap = [
 ];
 ```
 
+## Reveal-Animation
+
+Der Roadmap-Container bekommt `reveal reveal-delay-3` — identisch zum bisherigen `md:col-span-2`-Block, den er ersetzt.
+
 ## Was sich NICHT ändert
 
 - Section-Heading "Zertifikate & Weiterbildung" bleibt
